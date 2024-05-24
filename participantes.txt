@@ -1,0 +1,5 @@
+1001,Principiante,20
+1002,Intermedio,25
+1003,Avanzado,30
+1004,Principiante,22
+1005,Intermedio,27
