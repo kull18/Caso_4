@@ -9,6 +9,15 @@ public class Participante {
         this.edad = edad;
     }
 
+    public void setFolio(int folio) {
+        this.folio = folio;
+    }
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
     public int getFolio() {
         return folio;
     }
@@ -20,6 +29,8 @@ public class Participante {
     public int getEdad() {
         return edad;
     }
+
+
 
     @Override
     public String toString() {
