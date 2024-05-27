@@ -41,9 +41,12 @@ public class Main {
                     System.out.println("Ingresa la categoría:");
                     String categoria = scanner.nextLine();
                     int edad = leerEnteroPositivo(scanner, "Ingresa la edad:");
-
-                    Participante participante = new Participante(folio, categoria, edad);
-                    arbol.agregar(participante);
+                    if(categoria.equals("intermedio") || categoria.equals("avanzado") || categoria.equals("principiante")) {
+                        Participante participante = new Participante(folio, categoria, edad);
+                        arbol.agregar(participante);
+                    }else {
+                        System.out.println("no existe esa categoria");
+                    }
                     break;
 
                 case 2:
@@ -55,7 +58,7 @@ public class Main {
                     break;
 
                 case 4:
-                    arbol.mostrarNodoDerecho();
+                    arbol.mostrarNodoIzquierdo();
                     break;
 
                 case 5:

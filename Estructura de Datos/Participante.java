@@ -4,9 +4,9 @@ public class Participante {
     private int edad;
 
     public Participante(int folio, String categoria, int edad) {
-        this.folio = folio;
-        this.categoria = categoria;
-        this.edad = edad;
+            this.folio = folio;
+            this.categoria = categoria;
+            this.edad = edad;
     }
 
     public void setFolio(int folio) {

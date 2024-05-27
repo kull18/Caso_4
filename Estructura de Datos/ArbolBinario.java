@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-
+import java.io.FileWriter;
+import java.io.PrintWriter;
 public class ArbolBinario {
     private Nodo raiz;
 
@@ -27,16 +27,18 @@ public class ArbolBinario {
         return nodo;
     }
 
-    public void mostrarInOrden() {
+    public boolean mostrarInOrden() {
         mostrarInOrdenRecursivo(raiz);
+        return false;
     }
 
-    private void mostrarInOrdenRecursivo(Nodo nodo) {
+    private boolean mostrarInOrdenRecursivo(Nodo nodo) {
         if (nodo != null) {
             mostrarInOrdenRecursivo(nodo.izquierdo);
             System.out.println(nodo.participante);
             mostrarInOrdenRecursivo(nodo.derecho);
         }
+        return false;
     }
 
     public void mostrarNodoDerecho() {
@@ -53,6 +55,21 @@ public class ArbolBinario {
         } else {
             System.out.println("No hay nodo izquierdo.");
         }
+    }
+
+    public void escribirInformacion() {
+
+        try (FileWriter fichero = new FileWriter("prueba.txt"))//Nombre del archivo de texto
+        {
+            PrintWriter pw = new PrintWriter(fichero);
+
+            pw.println(mostrarInOrdenRecursivo(raiz));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 
