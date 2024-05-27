@@ -13,7 +13,7 @@ public class Main {
                 new Participante(1005, "Intermedio", 27)
         };
 
-        for (Participante p : participantesIniciales) {;
+        for (Participante p : participantesIniciales) {
             arbol.agregar(p);
         }
 
@@ -22,10 +22,12 @@ public class Main {
         do {
             System.out.println("Elige una opción");
             System.out.println("1. Ingresar datos");
-            System.out.println("2. Mostrar datos en orden");
-            System.out.println("3. Mostrar nodo derecho");
-            System.out.println("4. Mostrar nodo izquierdo");
-            System.out.println("5. Salir");
+            System.out.println("2. Mostrar orden");
+            System.out.println("3. Mostrar cantidad por categoria");
+            System.out.println("4. Mostrar promedio de edad");
+            System.out.println("5. Salida");
+
+
 
             while (!scanner.hasNextInt()) {
                 System.out.println("Por favor, ingresa un número válido.");
@@ -41,6 +43,7 @@ public class Main {
                     System.out.println("Ingresa la categoría:");
                     String categoria = scanner.nextLine();
                     int edad = leerEnteroPositivo(scanner, "Ingresa la edad:");
+
                     if(categoria.equals("intermedio") || categoria.equals("avanzado") || categoria.equals("principiante")) {
                         Participante participante = new Participante(folio, categoria, edad);
                         arbol.agregar(participante);
@@ -54,17 +57,17 @@ public class Main {
                     break;
 
                 case 3:
-                    arbol.mostrarNodoDerecho();
+                    arbol.mostrarCantidadPorCategoria();
+
                     break;
 
                 case 4:
-                    arbol.mostrarNodoIzquierdo();
+                    arbol.mostrarPromedioEdad();
                     break;
 
                 case 5:
                     System.out.println("Saliendo...");
                     break;
-
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
