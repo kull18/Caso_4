@@ -1,0 +1,5 @@
+Folio: 1001, Categoría: Principiante, Edad: 20
+Folio: 1002, Categoría: Intermedio, Edad: 25
+Folio: 1003, Categoría: Avanzado, Edad: 30
+Folio: 1004, Categoría: Principiante, Edad: 22
+Folio: 1005, Categoría: Intermedio, Edad: 27
