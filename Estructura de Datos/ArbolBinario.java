@@ -1,7 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 
 public class ArbolBinario {
     private Nodo raiz;
@@ -16,46 +16,35 @@ public class ArbolBinario {
 
     private Nodo agregarRecursivo(Nodo nodo, Participante participante) {
         if (nodo == null) {
-            return new Nodo(participante);
+                return new Nodo(participante);
         }
+        if(participante.getCategoria().equals("Principiante") || participante.getCategoria().equals("Intermedio") || participante.getCategoria().equals("Avanzado")) {
+            if (participante.getFolio() < nodo.participante.getFolio()) {
+                nodo.izquierdo = agregarRecursivo(nodo.izquierdo, participante);
+            } else if (participante.getFolio() > nodo.participante.getFolio()) {
+                nodo.derecho = agregarRecursivo(nodo.derecho, participante);
+            } else {
+                System.out.println("El folio " + participante.getFolio() + " ya existe. No se puede agregar el participante.");
+            }
 
-        if (participante.getFolio() < nodo.participante.getFolio()) {
-            nodo.izquierdo = agregarRecursivo(nodo.izquierdo, participante);
-        } else if (participante.getFolio() > nodo.participante.getFolio()) {
-            nodo.derecho = agregarRecursivo(nodo.derecho, participante);
-        } else {
-            System.out.println("El folio " + participante.getFolio() + " ya existe. No se puede agregar el participante.");
+        }else {
+            System.out.println("error al escribir la categoria");
         }
-
         return nodo;
     }
 
-    public boolean mostrarInOrden() {
-        mostrarInOrdenRecursivo(raiz);
-        return false;
+    public List<Participante> mostrarInOrden() {
+        List<Participante> participantes = new ArrayList<>();
+        mostrarInOrdenRecursivo(raiz, participantes);
+        return participantes;
     }
 
-    private void mostrarInOrdenRecursivo(Nodo nodo) {
+    private void mostrarInOrdenRecursivo(Nodo nodo, List<Participante> participantes) {
         if (nodo != null) {
-            mostrarInOrdenRecursivo(nodo.izquierdo);
+            mostrarInOrdenRecursivo(nodo.izquierdo, participantes);
+            participantes.add(nodo.participante);
             System.out.println(nodo.participante);
-            mostrarInOrdenRecursivo(nodo.derecho);
-        }
-    }
-
-    public void mostrarNodoDerecho() {
-        if (raiz != null && raiz.derecho != null) {
-            System.out.println(raiz.derecho.participante);
-        } else {
-            System.out.println("No hay nodo derecho.");
-        }
-    }
-
-    public void mostrarNodoIzquierdo() {
-        if (raiz != null && raiz.izquierdo != null) {
-            System.out.println(raiz.izquierdo.participante);
-        } else {
-            System.out.println("No hay nodo izquierdo.");
+            mostrarInOrdenRecursivo(nodo.derecho, participantes);
         }
     }
 
@@ -97,6 +86,5 @@ public class ArbolBinario {
         return conteo;
     }
 
-
-
+    // Inner class Nodo and class Participante should be defined here or separately
 }

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -5,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ArbolBinario arbol = new ArbolBinario();
         Scanner scanner = new Scanner(System.in);
+        Archivo archivo = new Archivo();
         Participante[] participantesIniciales = {
                 new Participante(1001, "Principiante", 20),
                 new Participante(1002, "Intermedio", 25),
@@ -25,7 +27,8 @@ public class Main {
             System.out.println("2. Mostrar orden");
             System.out.println("3. Mostrar cantidad por categoria");
             System.out.println("4. Mostrar promedio de edad");
-            System.out.println("5. Salida");
+            System.out.println("5. Crear txt");
+            System.out.println("6. Salir");
 
 
 
@@ -66,12 +69,18 @@ public class Main {
                     break;
 
                 case 5:
+                    List<Participante> participantes;
+                    participantes = arbol.mostrarInOrden();
+                    archivo.showALL(participantes);
+                    break;
+                case 6:
                     System.out.println("Saliendo...");
                     break;
+
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
-        } while(opcion != 5);
+        } while(opcion != 6);
 
         scanner.close();
     }

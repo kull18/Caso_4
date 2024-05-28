@@ -32,6 +32,8 @@ public class Participante {
 
 
 
+
+
     @Override
     public String toString() {
         return "Folio: " + folio + ", Categoría: " + categoria + ", Edad: " + edad;
